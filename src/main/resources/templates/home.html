@@ -2,24 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Using CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <a class="brand" th:href="@{/}"> Security Layer</a>
-            <ul class="nav">
-                <li><a th:href="@{/}" href="home.html"> Home </a></li>
-            </ul>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Title</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" th:href="@{/}" href="home.html">Home</a>
+            </nav>
         </div>
-    </div>
-    <h1>Home</h1>
-    <p>The belongings of the customer</p>
-   Hand Watch, Big Bag, Towel
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+    </header>
+    <main class="mdl-layout__content">
+        <h1>Home</h1>
+        <p><h3>The belongings of the customer :</h3></p>
+        <h4>Hand Watch, Big Bag, Towel</h4>
+        <form th:action="@{/logout}" method="post">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" id="signOut" value="signOut">
+                Sign out
+            </button>
+        </form>
+    </main>
 </div>
 </body>
 </html>

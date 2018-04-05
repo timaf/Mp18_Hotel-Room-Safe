@@ -2,31 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Using CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
 </head>
 <body>
-<div class="container">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <a class="brand" th:href="@{/}"> Security Layer</a>
-            <ul class="nav">
-                <li><a th:href="@{/}" href="home.html"> Home </a></li>
-            </ul>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Title</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" th:href="@{/}" href="home.html">Home</a>
+            </nav>
         </div>
-    </div>
-    <div class="content">
-        <p th:if="${param.logout}" class="alert">You have been logged out</p>
-        <p th:if="${param.error}" class="alert alert-error">There was an error, please try again</p>
-        <h2>Login with Username and Password</h2>
-        <form name="form" th:action="@{/login}" action="/login" method="POST">
-            <fieldset>
-                <input type="text" name="username" value="" placeholder="Username" autofocus="autofocus" />
-                <input type="password" name="password" placeholder="Password" />
-            </fieldset>
-            <input type="submit" id="login" value="Login"
-                   class="btn btn-primary" />
-        </form>
-    </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here -->
+            <p th:if="${param.logout}" class="alert">You have been logged out</p>
+            <p th:if="${param.error}" class="alert alert-error">There was an error, please try again</p>
+            <h2>Login with Username and Password</h2>
+            <form name="form" th:action="@{/login}" action="/login" method="POST">
+                <fieldset>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" name="username" value=""  autofocus="autofocus" id="sample1">
+                        <label class="mdl-textfield__label" for="sample1">Username</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="password" name="password" value=""  autofocus="autofocus" id="sample2">
+                        <label class="mdl-textfield__label" for="sample2">Password</label>
+                    </div>
+
+                </fieldset>
+
+
+                <!-- Colored raised button -->
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" id="login" value="Login">
+                    Login
+                </button>
+            </form>
+        </div>
+    </main>
 </div>
 </body>
 </html>
